@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 4: Coding Quiz</title>
+
+    <!--Linking CSS file-->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <p>
+          <a href="/"> View High Scores </a>
+        </p>
+        
+            <div >
+                <p id="timerText">Time Left: </p>
+                <p>90 seconds</p>
+            </div>
+
+      </header>
+
+    <div class="container">
+        <main id="home" class="flex-center flex-column">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code related questions with the time limit. Keep in mind 
+                that incorrect answers will penalize your score/time by seconds
+            </p>
+           
+            <button id="start">Start Quiz!</button>
+        </main>
+<!--quiz template-->
+        <main id="quiz" style="display: none">
+           
+            <div class="quizContent">
+                <h2 id="question"></h2>
+                <div id="choices">
+                    <p class="choice" id="A" onclick="checkAnswer('A')"></p>
+                    <p class="choice" id="B" onclick="checkAnswer('B')"></p>
+                    <p class="choice" id="C" onclick="checkAnswer('C')"></p>
+                </div>
+            </div>
+        </main>
+ <!--result template-->
+        <main id="result" style="display: none">
+            <p>Your Score</p>
+            <h1 id="totalScore">0</h1>
+            <div class="card">
+                <form method="POST">
+                  <div class="input-group">
+                    <input type="text" name="name" id="name" placeholder="Enter Your Name" />
+                  </div><br><br>
+                  <button id="submit">Save Score</button>
+                  <div id="msg"></div>
+                </form>
+            </div>
+        
+            <div class="card">
+                <h2>Previous Score</h2>
+                <p><strong>Name</strong> <span id="userName"></span></p>
+                <p><strong>Score</strong> <span id="userScore"></span></p>
+            </div>
+        </main>
+    </div>
+
+    <!--Linking Javascript file-->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
