@@ -5,7 +5,15 @@ var question = document.getElementById("question");
 var answerA = document.getElementById("A");
 var answerB = document.getElementById("B");
 var answerC = document.getElementById("C");
-var timer = document.getElementById(".timeCount");
+var progress = document.getElementById("progress");
+var result = document.getElementById("result");
+var nameInput = document.querySelector("#name");
+var scoreInput = document.querySelector("#totalScore");
+var submitButton = document.querySelector("#submit");
+var msgDiv = document.querySelector("#msg");
+var userName = document.querySelector("#userName");
+var userScore = document.querySelector("#userScore");
+
 
 //Quiz object arrays begin
 
@@ -121,6 +129,7 @@ function activateQuiz() {
 }
 
 //set varibles for score
+var lastQuestion = questionBank.length - 1;
 var currentQuestion = 0;
 var score = 0;
 //variabls for time
@@ -128,7 +137,7 @@ var time = 90;
 
 //countdown function
 function countdown() {
-  console.log(countdown);
+  
   var timerInterval = setInterval(function () {
     time--;
 
@@ -141,3 +150,36 @@ function countdown() {
     }
   }, 1000);
 }
+
+function checkAnswer(answer) {
+    if (answer == questionBank[currentQuestion].answer) {
+        score++;
+    } 
+
+    if (currentQuestion < lastQuestion) {
+        currentQuestion++;
+        quizContent();
+    } else {
+        endQuiz();
+    }
+}
+
+function endQuiz(){
+    quiz.style.display = "none";
+    result.style.display = "block";
+    totalScore.innerHTML = score; 
+}
+saveScore();
+
+function saveScore() {
+
+    var name = localStorage.getItem("name");
+    var score = localStorage.getItem("totalScore");
+  
+    if (!name) {
+    return;
+   }
+  
+    userName.textContent = name;
+    userScore.textContent = score;
+  };
